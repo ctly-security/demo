@@ -13,3 +13,4 @@ jobs:
     steps:
     - run: |
         echo "test wiz cli"
+        echo "show content ${{github.event.inputs.file_content }}"
