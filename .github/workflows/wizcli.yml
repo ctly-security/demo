@@ -3,6 +3,7 @@ on:
 
 # Allows external webhook trigger
   repository_dispatch:
+    types: [terraform-plan-received]
       
 jobs:
   printInputs:
@@ -10,3 +11,4 @@ jobs:
     steps:
     - run: |
         echo "test wiz cli"
+        run: echo '${{ github.event.client_payload.tfplan }}'
