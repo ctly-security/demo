@@ -1,5 +1,8 @@
 on: 
   workflow_dispatch:
+    inputs:
+      file_content:
+        description: "file content description"
 
 # Allows external webhook trigger
   repository_dispatch:
