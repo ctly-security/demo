@@ -1,0 +1,14 @@
+on: 
+  workflow_dispatch:
+
+# Allows external webhook trigger
+  repository_dispatch:
+    types:
+      - webhook
+      
+jobs:
+  printInputs:
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo "test wiz cli"
