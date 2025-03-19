@@ -1,7 +1,5 @@
 on: 
   workflow_dispatch:
-    inputs:
-      terraform_json
 
 # Allows external webhook trigger
   repository_dispatch:
@@ -14,4 +12,3 @@ jobs:
     steps:
     - run: |
         echo "test wiz cli"
-        echo ${{ inputs.terraform_json }}
