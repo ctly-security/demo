@@ -2,7 +2,6 @@ on:
   workflow_dispatch:
     inputs:
       terraform_json
-        required: true
 
 # Allows external webhook trigger
   repository_dispatch:
