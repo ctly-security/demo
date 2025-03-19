@@ -1,8 +1,5 @@
 on: 
   workflow_dispatch:
-    inputs:
-      file_content:
-        description: "file content description"
 
 # Allows external webhook trigger
   repository_dispatch:
@@ -13,4 +10,3 @@ jobs:
     steps:
     - run: |
         echo "test wiz cli"
-        echo "show content ${{github.event.inputs.file_content }}"
