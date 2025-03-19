@@ -11,4 +11,4 @@ jobs:
     steps:
     - run: |
         echo "test wiz cli"
-        run: echo '${{ github.event.client_payload.tfplan }}'
+        echo '${{ github.event.client_payload.tfplan }}'
