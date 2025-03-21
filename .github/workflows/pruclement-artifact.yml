@@ -21,7 +21,7 @@ jobs:
       - name: Download Artifact
         uses: actions/download-artifact@v4
         with:
-          name: build-artifact
+          name: tfplan
           path: artifact
           github-token: ${{ secrets.PRUCLEMENT_PAT }}
           repository: pruClement/terraform
