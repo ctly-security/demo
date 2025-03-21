@@ -23,6 +23,6 @@ jobs:
         with:
           name: build-artifact
           path: artifact
-          github-token: {{secrets.PRUCLEMENT_PAT}}
+          github-token: ${{ secrets.PRUCLEMENT_PAT }}
           repository: pruClement/terraform
           run-id: 13985737671
