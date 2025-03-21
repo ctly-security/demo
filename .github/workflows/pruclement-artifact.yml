@@ -18,6 +18,9 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
+      - name: check
+        run: echo ${{}}
+
       - name: Download Artifact
         uses: actions/download-artifact@v4
         with:
