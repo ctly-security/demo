@@ -21,13 +21,17 @@ jobs:
       - name: Split branch name
       # example: "https://github.com/pruClement/terraform/actions/runs/13986347053/artifacts/2794018099"
       # run: echo '${{ github.event.client_payload.artifact_url }}'
-        env:
-          BRANCH: ${{ github.event.client_payload.artifact_url }}
         id: split
-        run : echo "fragment=${BRANCH##*/}" >> $GITHUB_OUTPUT
-
+        run : |
+          echo 'ORG_NAME=${{ github.event.client_payload.artifact_url }} | cut -d/ -f4' >> $GITHUB_OUTPUT
+          echo 'REPO_NAME=${{ github.event.client_payload.artifact_url }} | cut -d/ -f5' >> $GITHUB_OUTPUT
+          echo 'RUN_ID=${{ github.event.client_payload.artifact_url }} | cut -d/ -f8' >> $GITHUB_OUTPUT
+          
       - name: Check
-        run: echo ${{ steps.split.outputs.fragment }}
+        run: |
+          echo ${{ steps.split.outputs.ORG_NAME }}
+          echo ${{ steps.split.outputs.REPO_NAME }}
+          echo ${{ steps.split.outputs.RUN_NAME }}
 
       - name: Download Artifact
         uses: actions/download-artifact@v4
@@ -36,7 +40,7 @@ jobs:
           path: artifact
           github-token: ${{ secrets.PRUCLEMENT_PAT }}
           repository: pruClement/terraform
-          run-id: 13985737671
+          run-id: 13986347053
 
     # - name: Download Wiz CLI
     #   run: curl -o wizcli https://downloads.wiz.io/wizcli/latest/wizcli-linux-amd64 && chmod +x wizcli
