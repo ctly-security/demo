@@ -36,11 +36,6 @@ jobs:
           # Set outputs
           echo "repo_name=$REPO_NAME" >> $GITHUB_OUTPUT
           echo "run_id=$RUN_ID" >> $GITHUB_OUTPUT
-          
-      - name: Checking
-        run: |
-          echo $REPO_NAME
-          echo $RUN_ID
 
       - name: Download Artifact
         uses: actions/download-artifact@v4
@@ -48,8 +43,8 @@ jobs:
           name: tfplan
           path: artifact
           github-token: ${{ secrets.PRUCLEMENT_PAT }}
-          repository: ${{ steps.split.outputs.REPO_NAME }}
-          run-id: ${{ steps.split.outputs.RUN_ID }}
+          repository: ${{ steps.extract.outputs.REPO_NAME }}
+          run-id: ${{ steps.extract.outputs.RUN_ID }}
 
       - name: unzip
         run: "ls"
