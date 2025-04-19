@@ -31,7 +31,7 @@ jobs:
         run: |
           echo ${{ steps.split.outputs.ORG_NAME }}
           echo ${{ steps.split.outputs.REPO_NAME }}
-          echo ${{ steps.split.outputs.RUN_NAME }}
+          echo ${{ steps.split.outputs.RUN_ID }}
 
       - name: Download Artifact
         uses: actions/download-artifact@v4
