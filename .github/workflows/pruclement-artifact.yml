@@ -25,7 +25,7 @@ jobs:
         run : |
           echo 'ORG_NAME="$(echo ${{ github.event.client_payload.artifact_url }} | cut -d/ -f4)"' >> $GITHUB_OUTPUT
           echo 'REPO_NAME="$(echo ${{ github.event.client_payload.artifact_url }} | cut -d/ -f5)"' >> $GITHUB_OUTPUT
-          echo 'RUN_ID="$($(echo { github.event.client_payload.artifact_url }} | cut -d/ -f8)"' >> $GITHUB_OUTPUT
+          echo 'RUN_ID="$(echo ${{ github.event.client_payload.artifact_url }} | cut -d/ -f8)"' >> $GITHUB_OUTPUT
           
       - name: Checking
         run: |
