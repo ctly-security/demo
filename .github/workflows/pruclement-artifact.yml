@@ -23,9 +23,9 @@ jobs:
       # run: echo '${{ github.event.client_payload.artifact_url }}'
         id: split
         run : |
-          echo 'ORG_NAME=${{ github.event.client_payload.artifact_url }} | cut -d/ -f4' >> $GITHUB_OUTPUT
-          echo 'REPO_NAME=${{ github.event.client_payload.artifact_url }} | cut -d/ -f5' >> $GITHUB_OUTPUT
-          echo 'RUN_ID=${{ github.event.client_payload.artifact_url }} | cut -d/ -f8' >> $GITHUB_OUTPUT
+          echo 'ORG_NAME=$(${{ github.event.client_payload.artifact_url }} | cut -d/ -f4)' >> $GITHUB_OUTPUT
+          echo 'REPO_NAME=$(${{ github.event.client_payload.artifact_url }} | cut -d/ -f5)' >> $GITHUB_OUTPUT
+          echo 'RUN_ID=$(${{ github.event.client_payload.artifact_url }} | cut -d/ -f8)' >> $GITHUB_OUTPUT
           
       - name: Checking
         run: |
