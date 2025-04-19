@@ -23,7 +23,9 @@ jobs:
       # run: echo '${{ github.event.client_payload.artifact_url }}'
         id: extract
         run : |
-          echo ARTIFACT_URL='${{ github.event.client_payload.artifact_url }}'
+          ARTIFACT_URL='${{ github.event.client_payload.artifact_url }}'
+          echo "Full URL: $ARTIFACT_URL"
+          
           REPO_NAME=$(echo "$ARTIFACT_URL" | awk -F'/' '{print $4 "/" $5}')
           # Extract run ID
           RUN_ID=$(echo "$ARTIFACT_URL" | awk -F'/' '{print $8}')
@@ -46,7 +48,7 @@ jobs:
           name: tfplan
           path: artifact
           github-token: ${{ secrets.PRUCLEMENT_PAT }}
-          repository: ${{ steps.split.outputs.ORG_NAME }} + "/" + ${{ steps.split.outputs.REPO_NAME }}
+          repository: ${{ steps.split.outputs.REPO_NAME }}
           run-id: ${{ steps.split.outputs.RUN_ID }}
 
       - name: unzip
