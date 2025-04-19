@@ -27,7 +27,7 @@ jobs:
           echo 'REPO_NAME=${{ github.event.client_payload.artifact_url }} | cut -d/ -f5' >> $GITHUB_OUTPUT
           echo 'RUN_ID=${{ github.event.client_payload.artifact_url }} | cut -d/ -f8' >> $GITHUB_OUTPUT
           
-      - name: Check
+      - name: Checking
         run: |
           echo ${{ steps.split.outputs.ORG_NAME }}
           echo ${{ steps.split.outputs.REPO_NAME }}
@@ -39,8 +39,11 @@ jobs:
           name: tfplan
           path: artifact
           github-token: ${{ secrets.PRUCLEMENT_PAT }}
-          repository: pruClement/terraform
-          run-id: 13986347053
+          repository: ${{ steps.split.outputs.ORG_NAME }} + "/" + ${{ steps.split.outputs.REPO_NAME }}
+          run-id: ${{ steps.split.outputs.RUN_ID }}
+
+      - name: unzip
+        run: "ls"
 
     # - name: Download Wiz CLI
     #   run: curl -o wizcli https://downloads.wiz.io/wizcli/latest/wizcli-linux-amd64 && chmod +x wizcli
