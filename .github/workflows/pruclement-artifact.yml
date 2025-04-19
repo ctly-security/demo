@@ -47,7 +47,9 @@ jobs:
           run-id: ${{ steps.extract.outputs.RUN_ID }}
 
       - name: unzip
-        run: "ls"
+        run: |
+          cd artifact
+          ls
 
     # - name: Download Wiz CLI
     #   run: curl -o wizcli https://downloads.wiz.io/wizcli/latest/wizcli-linux-amd64 && chmod +x wizcli
